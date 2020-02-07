@@ -1,0 +1,29 @@
+<?php
+
+namespace app\controllers;
+
+use yii\web\Controller;
+use yii\data\Pagination;
+use app\models\Thefts;
+use yii\data\ActiveDataProvider;
+
+class TheftsController extends Controller {
+
+    //...
+
+    /**
+     * Список записей
+     */
+    public function actionIndex() {
+        $dataProvider = new ActiveDataProvider([
+            'query' => Thefts::find(),
+            'pagination' => [
+                'pageSize' => 20,
+            ],
+        ]);
+        return $this->render('index', [
+            'dataProvider' => $dataProvider,
+            'paramA' => 10
+        ]);
+    }
+}

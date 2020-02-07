@@ -1,0 +1,51 @@
+<?php
+
+namespace app\controllers;
+use Yii;
+use yii\web\Controller;
+use yii\data\Pagination;
+use app\models\Damages;
+use yii\data\ActiveDataProvider;
+
+class DamagesController extends Controller {
+
+    public function actionIndex() {
+        $dataProvider = new ActiveDataProvider([
+            'query' => Damages::find(),
+            'pagination' => [
+                'pageSize' => 20,
+            ],
+        ]);
+        return $this->render('index', [
+            'dataProvider' => $dataProvider,
+            'paramA' => 10
+        ]);
+    }
+
+     public function actionCreate()
+    {
+        $model = new Damages();
+        // если пришли post-данные...
+        if ($model->load(Yii::$app->request->post())) {
+            // ...проверяем и сохраняем эти данные
+            if ($model->save()) {
+                // данные прошли валидацию, отмечаем этот факт
+                Yii::$app->session->setFlash(
+                    'success',
+                    true
+                );
+                // перезагружаем страницу, чтобы избежать повтороной отправки формы
+                return $this->refresh();
+            } else {
+                // данные не прошли валидацию, отмечаем этот факт
+                Yii::$app->session->setFlash(
+                    'success',
+                    false
+                );
+                // не перезагружаем страницу, чтобы сохранить пользовательские данные
+            }
+        }
+        return $this->render('create', ['model' => $model]);
+    }
+    
+}
