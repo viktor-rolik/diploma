@@ -11,12 +11,12 @@ class Thefts extends ActiveRecord
 	{
 		return 'thefts';
 	}
-    public function behaviors()
-    {
-        return [
-            OptimisticLockBehavior::className(),
-        ];
-    }
+    // public function behaviors()
+    // {
+    //     return [
+    //         OptimisticLockBehavior::className(),
+    //     ];
+    // }
 
     public function optimisticLock()
     {

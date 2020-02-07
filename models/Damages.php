@@ -11,12 +11,12 @@ class Damages extends ActiveRecord
 	{
 		return 'damages';
 	}
-    public function behaviors()
-    {
-        return [
-            OptimisticLockBehavior::className(),
-        ];
-    }
+    // public function behaviors()
+    // {
+    //     return [
+    //         OptimisticLockBehavior::className(),
+    //     ];
+    // }
 
     public function optimisticLock()
     {
