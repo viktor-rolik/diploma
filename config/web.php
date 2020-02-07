@@ -53,6 +53,7 @@ $config = [
             'enableStrictParsing' => false,
             'rules' => [
                 // ...
+                '/' => 'damages/index',
             ],
         ],
     ],
