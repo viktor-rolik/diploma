@@ -57,6 +57,13 @@ $config = [
                 '/' => 'damages/index',
             ],
         ],
+        
+    ],
+    'modules' => [
+        'gridview' => [
+            'class' => 'kartik\grid\Module',
+        // other module settings
+        ],
     ],
     'params' => $params,
 ];

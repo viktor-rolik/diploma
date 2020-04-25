@@ -52,9 +52,10 @@ AppAsset::register($this);
             ['label' => 'Пошкодження', 'url' => ['/damages/index']],
             //['label' => 'Add damage', 'url' => ['/damages/create']],
             ['label' => 'Викрадення', 'url' => ['/thefts/index']],
-            ['label' => 'Головна', 'url' => ['/site/index']],
+            //['label' => 'Головна', 'url' => ['/site/index']],
            //['label' => 'About', 'url' => ['/site/about']],
-            ['label' => 'Контакти', 'url' => ['/site/contact']],
+            //['label' => 'Контакти', 'url' => ['/site/contact']],
+            ['label' => 'Реєстрація', 'url' => ['/site/signup']],
             Yii::$app->user->isGuest ? (
                 ['label' => 'Вхід', 'url' => ['/site/login']]
             ) : (

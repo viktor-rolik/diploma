@@ -2,6 +2,7 @@
 
 use yii\helpers\Html;
 use yii\grid\GridView;
+use kartik\export\ExportMenu;
 
 /* @var $this yii\web\View */
 /* @var $searchModel app\models\DamagesSearch */
@@ -31,29 +32,38 @@ if (Yii::$app->user->can('operator')){
     <p>
         <?= Html::a('Нове повідомлення', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
-<?php } ?>
-    <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
-
-    <?= GridView::widget([
+    <?= ExportMenu::widget([
         'dataProvider' => $dataProvider,
-        'filterModel' => $searchModel,
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
-
             'id',
             'city:ntext',
             'stolen_property:ntext',
             'theft_detection_time',
-            //'notes:ntext',
-            //'last_update',
-
+            'notes:ntext',
+            //'last_update',,
+        ],
+    ]); 
+    ?> 
+<?php } ?>
+    <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
+    <?= GridView::widget([
+        'dataProvider' => $dataProvider,
+        'filterModel' => $searchModel,
+        'columns' => [
+           // ['class' => 'yii\grid\SerialColumn'],
+            //'id',
+            'city:ntext',
+            'stolen_property:ntext',
+            'theft_detection_time',
+            'notes:ntext',
+            //'last_update',,
             [
                 'class' => 'yii\grid\ActionColumn',
-            'template'=>$actionTemplate,
-            'visible' => $canSeeActionColumn
+                'template'=>$actionTemplate,
+                'visible' => $canSeeActionColumn
             ],
         ],
-    ]); ?>
-
-
+    ]);
+    ?>
 </div>

@@ -14,6 +14,7 @@ use app\models\Damages;
 use yii\data\ActiveDataProvider;
 use app\models\SignupForm;
 use app\models\User;
+use app\models\Poll;
 
 class SiteController extends Controller
 {
@@ -169,4 +170,5 @@ class SiteController extends Controller
         }
         return $this->render('signup', compact('model'));
     }
+
 }
