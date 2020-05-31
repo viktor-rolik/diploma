@@ -3,15 +3,15 @@
 namespace app\controllers;
 
 use Yii;
-use app\models\Thefts;
-use app\models\TheftsSearch;
+use app\models\Requests;
+use app\models\RequestsSearch;
 use app\models\Notification;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 use yii\filters\AccessControl;
 
-class TheftsController extends Controller {
+class RequestsController extends Controller {
 
     /**
      * {@inheritdoc}
@@ -42,7 +42,7 @@ class TheftsController extends Controller {
                     [
                         'allow' => true,
                         'actions' => ['create'],
-                        'roles' => ['operator', 'main_operator'],
+                        'roles' => [],
                     ],
                     [
                         'allow' => true,
@@ -65,7 +65,7 @@ class TheftsController extends Controller {
      */
     public function actionIndex()
     {
-        $searchModel = new TheftsSearch();
+        $searchModel = new RequestsSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
         if (Yii::$app->user->can('main_operator')){
             $main_operators = Yii::$app->authManager->getUserIdsByRole('main_operator');
@@ -103,7 +103,7 @@ class TheftsController extends Controller {
      */
     public function actionCreate()
     {
-        $model = new Thefts();
+        $model = new Requests();
         if ($model->load(Yii::$app->request->post())) {
             if ($model->save()) {
                 Yii::$app->session->setFlash('success','Збережено');
@@ -180,7 +180,7 @@ class TheftsController extends Controller {
      */
     protected function findModel($id)
     {
-        if (($model = Thefts::findOne($id)) !== null) {
+        if (($model = Requests::findOne($id)) !== null) {
             return $model;
         }
 

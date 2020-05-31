@@ -7,6 +7,7 @@ use yii\db\ActiveRecord;
 class Notification extends ActiveRecord
 {
     const TYPE_THEFT = 1;
+    
 
 	public static function tableName()
 	{

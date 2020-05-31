@@ -4,12 +4,12 @@ namespace app\models;
 
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
-use app\models\Damages;
+use app\models\Requests;
 
 /**
  * DamagesSearch represents the model behind the search form of `app\models\Damages`.
  */
-class DamagesSearch extends Damages
+class RequestsSearch extends Requests
 {
     /**
      * {@inheritdoc}
@@ -18,7 +18,7 @@ class DamagesSearch extends Damages
     {
         return [
             [['id', 'last_update'], 'integer'],
-            [['name', 'city', 'damage_time', 'recovery_time', 'notes'], 'safe'],
+            [['name', 'phone', 'email','notes'], 'safe'],
         ];
     }
 
@@ -40,7 +40,7 @@ class DamagesSearch extends Damages
      */
     public function search($params)
     {
-        $query = Damages::find();
+        $query = Requests::find();
 
         // add conditions that should always apply here
 
@@ -59,13 +59,15 @@ class DamagesSearch extends Damages
         // grid filtering conditions
         $query->andFilterWhere([
             'id' => $this->id,
-            'damage_time' => $this->damage_time,
-            'recovery_time' => $this->recovery_time,
+            'name' => $this->name,
+            'phone' => $this->phone,
+            'email' => $this->email,
             'last_update' => $this->last_update,
         ]);
 
         $query->andFilterWhere(['like', 'name', $this->name])
-            ->andFilterWhere(['like', 'city', $this->city])
+            ->andFilterWhere(['like', 'phone', $this->phone])
+            ->andFilterWhere(['like', 'email', $this->email])
             ->andFilterWhere(['like', 'notes', $this->notes]);
 
         return $dataProvider;

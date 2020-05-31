@@ -3,8 +3,8 @@
 namespace app\controllers;
 
 use Yii;
-use app\models\Damages;
-use app\models\DamagesSearch;
+use app\models\Orders;
+use app\models\OrdersSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
@@ -14,7 +14,7 @@ use yii\filters\AccessControl;
 /**
  * DamagesController implements the CRUD actions for Damages model.
  */
-class DamagesController extends Controller
+class OrdersController extends Controller
 {
     /**
      * {@inheritdoc}
@@ -68,7 +68,7 @@ class DamagesController extends Controller
      */
     public function actionIndex()
     {
-        $searchModel = new DamagesSearch();
+        $searchModel = new OrdersSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
         return $this->render('index', [
             'searchModel' => $searchModel,
@@ -96,7 +96,7 @@ class DamagesController extends Controller
      */
     public function actionCreate()
     {
-        $model = new Damages();
+        $model = new Orders();
 
         if ($model->load(Yii::$app->request->post())) {
             if ($model->save()) {
@@ -161,7 +161,7 @@ class DamagesController extends Controller
      */
     protected function findModel($id)
     {
-        if (($model = Damages::findOne($id)) !== null) {
+        if (($model = Orders::findOne($id)) !== null) {
             return $model;
         }
 

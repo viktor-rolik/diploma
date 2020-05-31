@@ -8,7 +8,7 @@ use kartik\export\ExportMenu;
 /* @var $searchModel app\models\DamagesSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Викрадення';
+$this->title = 'Заявки на роботи';
 $this->params['breadcrumbs'][] = $this->title;
 $actionTemplate = '{view}';
 $canSeeActionColumn = true;
@@ -25,21 +25,18 @@ if (Yii::$app->user->can('operator')){
     $canSeeActionColumn = false;
 }
 ?>
-<div class="thefts-index">
+<div class="requests-index">
 
     <h1><?= Html::encode($this->title) ?></h1>
 <?php if (Yii::$app->user->can('operator') || Yii::$app->user->can('main_operator')) { ?>
-    <p>
-        <?= Html::a('Нове повідомлення', ['create'], ['class' => 'btn btn-success']) ?>
-    </p>
     <?= ExportMenu::widget([
         'dataProvider' => $dataProvider,
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
             'id',
-            'city:ntext',
-            'stolen_property:ntext',
-            'theft_detection_time',
+            'name:ntext',
+            'phone',
+            'email:ntext',
             'notes:ntext',
             //'last_update',,
         ],
@@ -50,12 +47,12 @@ if (Yii::$app->user->can('operator')){
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
         'filterModel' => $searchModel,
-        'columns' => [
-           // ['class' => 'yii\grid\SerialColumn'],
+        'columns' => [ 
+           //['class' => 'yii\grid\SerialColumn'],
             //'id',
-            'city:ntext',
-            'stolen_property:ntext',
-            'theft_detection_time',
+            'name:ntext',
+            'phone',
+            'email:ntext',
             'notes:ntext',
             //'last_update',,
             [

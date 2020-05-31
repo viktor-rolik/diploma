@@ -10,21 +10,15 @@ use kartik\datetime\DateTimePicker;
 ?>
 <div col="row">
 <div class="col-sm-12 col-md-6">
-<div class="thefts-form">
+<div class="prices-form">
 
     <?php $form = ActiveForm::begin(); ?>
 
     <?= $form->field($model, 'last_update')->hiddenInput()->label(false); ?>
-    <?= $form->field($model, 'city')->textInput(); ?>
-    <?= $form->field($model, 'stolen_property')->textInput(); ?>
-    <?= $form->field($model, 'theft_detection_time')->widget(DateTimePicker::classname(), [
-        'options' => ['placeholder' => 'Оберіть дату та час ...'],
-        'pluginOptions' => [
-            'todayBtn' => true,
-            'autoclose' => true
-        ]
-    ]); ?>
-    <?= $form->field($model, 'notes')->textInput(['rows' => 3]); ?>
+    <?= $form->field($model, 'name_works')->textInput(); ?>
+    <?= $form->field($model, 'units_measurement')->textInput(); ?>
+    <?= $form->field($model, 'price')->textInput(); ?>
+    <?= $form->field($model, 'notes')->textarea(['rows' => 3]); ?>
     <?= Html::submitButton('Зберегти', ['class' => 'btn btn-primary']); ?>
 
     <?php ActiveForm::end(); ?>

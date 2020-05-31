@@ -11,15 +11,22 @@ use yii\widgets\Breadcrumbs;
 use app\assets\AppAsset;
 use app\models\Notification;
 
+$siteIndex = ['label' => 'Головна', 'url' => ['/site/index']];
+$order = '';
+$price = '';
+$request = '';
 $isNewTheft = false;
-
-if (Yii::$app->user->can('main_operator')){
+if (Yii::$app->user->can('operator') || Yii::$app->user->can('main_operator')) {
    if (Notification::find()->where(['type_id' => 1])->exists()) {
     $isNewTheft = true;
 }
+$siteIndex = '';
+$order = ['label' => 'Замовлення', 'url' => ['/orders/index']];
+$price = ['label' => 'Розцінки на роботи', 'url' => ['/prices/index']];
+$request = ['label' => 'Заявки на ремонт', 'url' => ['/requests/index']];
 }
 if($isNewTheft) {
-    Yii::$app->session->setFlash('info','Нове повідомлення про крадіжку');
+    Yii::$app->session->setFlash('info','Нова заявка');
 }
 AppAsset::register($this);
 ?>
@@ -49,13 +56,12 @@ AppAsset::register($this);
     echo Nav::widget([
         'options' => ['class' => 'navbar-nav navbar-right'],
         'items' => [
-            ['label' => 'Пошкодження', 'url' => ['/damages/index']],
-            //['label' => 'Add damage', 'url' => ['/damages/create']],
-            ['label' => 'Викрадення', 'url' => ['/thefts/index']],
-            //['label' => 'Головна', 'url' => ['/site/index']],
-           //['label' => 'About', 'url' => ['/site/about']],
+            $siteIndex,
+            $order,
+            $price,
             //['label' => 'Контакти', 'url' => ['/site/contact']],
-            ['label' => 'Реєстрація', 'url' => ['/site/signup']],
+            $request,
+            //['label' => 'Реєстрація', 'url' => ['/site/signup']],
             Yii::$app->user->isGuest ? (
                 ['label' => 'Вхід', 'url' => ['/site/login']]
             ) : (

@@ -4,14 +4,14 @@ use yii\helpers\Html;
 use yii\widgets\DetailView;
 
 /* @var $this yii\web\View */
-/* @var $model app\models\Damages */
+/* @var $model app\models\Thefts */
 
-$this->title = $model->name;
-$this->params['breadcrumbs'][] = ['label' => 'Пошкодження', 'url' => ['index']];
+$this->title = $model->name_works;
+$this->params['breadcrumbs'][] = ['label' => 'Розцінки', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 \yii\web\YiiAsset::register($this);
 ?>
-<div class="damages-view">
+<div class="prices-view">
 
     <h1><?= Html::encode($this->title) ?></h1>
 <?php if (Yii::$app->user->can('main_operator')) { ?>
@@ -30,10 +30,9 @@ $this->params['breadcrumbs'][] = $this->title;
         'model' => $model,
         'attributes' => [
             'id',
-            'name:ntext',
-            'city:ntext',
-            'damage_time',
-            'recovery_time',
+            'name_works:ntext',
+            'units_measurement:ntext',
+            'price:ntext',
             'notes:ntext',
             'last_update',
         ],

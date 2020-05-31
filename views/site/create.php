@@ -5,12 +5,12 @@ use yii\helpers\Html;
 /* @var $this yii\web\View */
 /* @var $model app\models\Damages */
 
-$this->title = 'Нове повідомлення';
-$this->params['breadcrumbs'][] = ['label' => 'Пошкодження', 'url' => ['index']];
+$this->title = 'Додати нову заявку';
+$this->params['breadcrumbs'][] = ['label' => 'Заявки', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 
-<div class="damages-create">
+<div class="requests-create">
 
     <h1><?= Html::encode($this->title) ?></h1>
 

@@ -5,12 +5,12 @@ use yii\helpers\Html;
 /* @var $this yii\web\View */
 /* @var $model app\models\Damages */
 
-$this->title = 'Нове повідомлення';
-$this->params['breadcrumbs'][] = ['label' => 'Викрадення', 'url' => ['index']];
+$this->title = 'Додати нову розцінку';
+$this->params['breadcrumbs'][] = ['label' => 'Розцінки', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 
-<div class="thefts-create">
+<div class="prices-create">
 
     <h1><?= Html::encode($this->title) ?></h1>
 

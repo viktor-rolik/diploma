@@ -6,13 +6,13 @@ use yii\helpers\Html;
 /* @var $model app\models\Damages */
 
 $this->title = 'Редагувати запис: ' . $model->name;
-$this->params['breadcrumbs'][] = ['label' => 'Пошкодження', 'url' => ['index']];
+$this->params['breadcrumbs'][] = ['label' => 'Замовлення', 'url' => ['index']];
 $this->params['breadcrumbs'][] = ['label' => $model->name, 'url' => ['view', 'id' => $model->id]];
 $this->params['breadcrumbs'][] = 'Update';
 ?>
 
 
-<div class="damages-update">
+<div class="orders-update">
 
     <h1><?= Html::encode($this->title) ?></h1>
 

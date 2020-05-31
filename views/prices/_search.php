@@ -8,7 +8,7 @@ use yii\widgets\ActiveForm;
 /* @var $form yii\widgets\ActiveForm */
 ?>
 
-<div class="damages-search">
+<div class="prices-search">
 
     <?php $form = ActiveForm::begin([
         'action' => ['index'],
@@ -17,13 +17,11 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'id') ?>
 
-    <?= $form->field($model, 'name') ?>
+    <?= $form->field($model, 'name_works') ?>
 
-    <?= $form->field($model, 'city') ?>
+    <?= $form->field($model, 'units_measurement') ?>
 
-    <?= $form->field($model, 'damage_time') ?>
-
-    <?= $form->field($model, 'recovery_time') ?>
+    <?= $form->field($model, 'price') ?>
 
     <?php // echo $form->field($model, 'notes') ?>
 

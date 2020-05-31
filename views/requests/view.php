@@ -6,12 +6,12 @@ use yii\widgets\DetailView;
 /* @var $this yii\web\View */
 /* @var $model app\models\Thefts */
 
-$this->title = $model->city;
-$this->params['breadcrumbs'][] = ['label' => 'Викрадення', 'url' => ['index']];
+$this->title = $model->name;
+$this->params['breadcrumbs'][] = ['label' => 'Заявки', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 \yii\web\YiiAsset::register($this);
 ?>
-<div class="thefts-view">
+<div class="requests-view">
 
     <h1><?= Html::encode($this->title) ?></h1>
 <?php if (Yii::$app->user->can('main_operator')) { ?>
@@ -30,9 +30,9 @@ $this->params['breadcrumbs'][] = $this->title;
         'model' => $model,
         'attributes' => [
             'id',
-            'city:ntext',
-            'stolen_property:ntext',
-            'theft_detection_time',
+            'name:ntext',
+            'phone',
+            'email:ntext',
             'notes:ntext',
             'last_update',
         ],

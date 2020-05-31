@@ -7,7 +7,7 @@ use kartik\export\ExportMenu;
 /* @var $searchModel app\models\DamagesSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Пошкодження';
+$this->title = 'Замовлення';
 $this->params['breadcrumbs'][] = $this->title;
 
 $actionTemplate = '{view}';
@@ -25,13 +25,13 @@ if (Yii::$app->user->can('operator')){
     $canSeeActionColumn = false;
 }
 ?>
-<div class="damages-index">
+<div class="orders-index">
 
     <h1><?= Html::encode($this->title) ?></h1>
 
     <?php if (Yii::$app->user->can('operator') || Yii::$app->user->can('main_operator')) { ?>
         <p>
-            <?= Html::a('Нове повідомлення', ['create'], ['class' => 'btn btn-success']) ?>
+            <?= Html::a('Додати замовлення', ['create'], ['class' => 'btn btn-success']) ?>
             <?= ExportMenu::widget([
                 'dataProvider' => $dataProvider,
                 'columns' => [
@@ -39,8 +39,13 @@ if (Yii::$app->user->can('operator')){
                     'id',
                     'name:ntext',
                     'city:ntext',
-                    'damage_time',
-                    'recovery_time',
+                    'address:ntext',
+                    'type_work:ntext',
+                    'start_date',
+                    'final_date',
+                    'phone',
+                    'email',
+                    'sum',
                 ],
             ]); 
             ?>
@@ -56,8 +61,14 @@ if (Yii::$app->user->can('operator')){
             //'id',
             'name:ntext',
             'city:ntext',
-            'damage_time',
-            'recovery_time',
+            'address:ntext',
+            'type_work:ntext',
+            'start_date',
+            'final_date',
+            //'phone',
+            //'email:ntext',
+            //'sum:ntext',
+            'notes:ntext',
             [
                 'class' => 'yii\grid\ActionColumn',
                 'template'=>$actionTemplate,

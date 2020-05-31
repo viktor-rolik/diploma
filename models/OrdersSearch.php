@@ -4,12 +4,12 @@ namespace app\models;
 
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
-use app\models\Thefts;
+use app\models\Orders;
 
 /**
  * DamagesSearch represents the model behind the search form of `app\models\Damages`.
  */
-class TheftsSearch extends Thefts
+class OrdersSearch extends Orders
 {
     /**
      * {@inheritdoc}
@@ -17,8 +17,9 @@ class TheftsSearch extends Thefts
     public function rules()
     {
         return [
-            [['id', 'last_update'], 'integer'],
-            [['city', 'stolen_property',  'theft_detection_time', 'notes'], 'safe'],
+            [['id', 'sum', 'last_update'], 'integer'],
+            [['phone'], 'string'],
+            [['name', 'city', 'address','type_work', 'start_date', 'final_date', 'notes'], 'safe'],
         ];
     }
 
@@ -40,7 +41,7 @@ class TheftsSearch extends Thefts
      */
     public function search($params)
     {
-        $query = Thefts::find();
+        $query = Orders::find();
 
         // add conditions that should always apply here
 
@@ -59,13 +60,21 @@ class TheftsSearch extends Thefts
         // grid filtering conditions
         $query->andFilterWhere([
             'id' => $this->id,
-            'city' => $this->city,
-            'stolen_property' => $this->stolen_property,
+            'start_date' => $this->start_date,
+            'final_date' => $this->final_date,
+            'phone' => $this->phone,
+            'email' => $this->email,
+            'sum' => $this->sum,
             'last_update' => $this->last_update,
         ]);
 
-        $query->andFilterWhere(['like', 'city', $this->city])
-            ->andFilterWhere(['like', 'stolen_property', $this->stolen_property])
+        $query->andFilterWhere(['like', 'name', $this->name])
+            ->andFilterWhere(['like', 'city', $this->city])
+            ->andFilterWhere(['like', 'address', $this->address])
+            ->andFilterWhere(['like', 'type_work', $this->type_work])
+            ->andFilterWhere(['like', 'phone', $this->phone])
+            ->andFilterWhere(['like', 'email', $this->email])
+            ->andFilterWhere(['like', 'sum', $this->sum])
             ->andFilterWhere(['like', 'notes', $this->notes]);
 
         return $dataProvider;

@@ -5,7 +5,7 @@ $db = require __DIR__ . '/db.php';
 
 $config = [
     'id' => 'basic',
-    'name' => 'Операторський комплекс',
+    'name' => 'MasterBud',
     'language' => 'uk-UK',
     'basePath' => dirname(__DIR__),
     'bootstrap' => ['log'],
@@ -54,7 +54,7 @@ $config = [
             'enableStrictParsing' => false,
             'rules' => [
                 // ...
-                '/' => 'damages/index',
+                '/' => 'orders/index',
             ],
         ],
         

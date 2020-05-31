@@ -8,7 +8,7 @@ use yii\widgets\ActiveForm;
 /* @var $form yii\widgets\ActiveForm */
 ?>
 
-<div class="thefts-search">
+<div class="orders-search">
 
     <?php $form = ActiveForm::begin([
         'action' => ['index'],
@@ -17,11 +17,23 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'id') ?>
 
+    <?= $form->field($model, 'name') ?>
+
     <?= $form->field($model, 'city') ?>
 
-    <?= $form->field($model, 'stolen_property') ?>
+    <?= $form->field($model, 'address') ?>
 
-    <?= $form->field($model, 'theft_detection_time') ?>
+    <?= $form->field($model, 'type_work') ?>
+
+    <?= $form->field($model, 'start_date') ?>
+
+    <?= $form->field($model, 'final_date') ?>
+
+    <?= $form->field($model, 'phone') ?>
+    
+    <?= $form->field($model, 'email') ?>
+    
+    <?= $form->field($model, 'sum') ?>
 
     <?php // echo $form->field($model, 'notes') ?>
 

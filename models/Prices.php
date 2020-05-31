@@ -5,11 +5,11 @@ namespace app\models;
 use yii\db\ActiveRecord;
 use yii\behaviors\OptimisticLockBehavior;
 
-class Thefts extends ActiveRecord
+class Prices extends ActiveRecord
 {
 	public static function tableName()
 	{
-		return 'thefts';
+		return 'prices';
 	}
     // public function behaviors()
     // {
@@ -24,18 +24,18 @@ class Thefts extends ActiveRecord
     }
     public function attributeLabels() {
         return [
-            'city' => 'Населений пункт',
-            'stolen_property' => 'Викрадене обладнання (майно)',
-            'theft_detection_time' => 'Час виявлення крадіжки',
+            'name_works' => 'Найменування робіт',
+            'units_measurement' => 'Одиниці виміру',
+            'price' => 'Ціна, грн',
             'notes' => 'Примітки',
         ];
     }
 
     public function rules() {
         return [
-        	[['city', 'stolen_property', 'theft_detection_time'], 'required','message' => 'Поле обовязкове для заповнення'],
-            [['city', 'stolen_property','notes'], 'string'],
-            [['theft_detection_time'], 'safe'],
+        	[['name_works', ], 'required','message' => 'Поле обовязкове для заповнення'],
+            [['name_works', 'units_measurement','notes'], 'string'],
+            [['price'], 'integer'],
         ];
     }
 }
